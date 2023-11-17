@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_basic_1/screens/timer_screen.dart';
+import 'package:flutter_basic_1/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Pomodoro Timer App',
-      home: TimerScreen(),
+      title: 'Todo List',
+      home: SplashScreen(),
     );
   }
 }

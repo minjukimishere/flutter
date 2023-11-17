@@ -1,0 +1,25 @@
+데이터관련 실습 대표적인 예제인 할 일 목록
+
+1. 화면
+    1.Splash Screen(초기 진입 스플래시 화면)
+    2. Login Screen(로그인 화면)
+    3. ListScreen(홈 화면)
+    4. NewsScreen(뉴스 화면)
+
+2. 기능
+    1. 로그인->아이디와 비밀번호를 입력하면 검증 없이 로그인
+    2. 자동 로그인->앱을 다시 열었을 때 로그인 화면 스킵(SharedPreferences)
+    3. Todo 목록보기(sqlite/Firebase)
+    4. Todo 상세보기(sqlite/Firebase)
+    5. Todo 등록하기(sqlite/Firebase)
+    6. Todo 삭제하기(sqlite/Firebase)
+    7. Todo 수정보기(sqlite/Firebase)
+    8. 뉴스 가져와서 보여주기(API)
+
+-> 가짜 자동 로그인 기능 (SharedPreferences) 프론트엔드
+-> 뉴스 정보 API 연동방법
+-> Todo CRUD(create,read,update,delete)
+
+->list_screen.dart 를 list2_screen.dart 로 운용
+->SplashScreen: 앱 시작할 때 보여주는 화면->로고를 보여주는 동안 데이터 로드(이 화면에서 정보 가져오기)
+->providers 데이터 관련 기능 따로 빼서 작성한 화일
