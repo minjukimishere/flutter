@@ -69,55 +69,56 @@ class _ListScreenState extends State<ListScreen> {
       floatingActionButton: FloatingActionButton(
         child: const Text('+', style: TextStyle(fontSize: 25)),
         onPressed: () {
-          /*
-        showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              String title = '';
-              String description = '';
-              return AlertDialog(
-                title: const Text('할 일 추가하기'),
-                content: SizedBox(
-                  height: 200,
-                  child: Column(
-                    children: [
-                      TextField(
-                        onChanged: (value) {
-                          title = value;
-                        },
-                        decoration: const InputDecoration(labelText: '제목'),
-                      ),
-                      TextField(
-                        onChanged: (value) {
-                          description = value;
-                        },
-                        decoration: const InputDecoration(labelText: '설명'),
-                      )
-                    ],
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                String title = '';
+                String description = '';
+                return AlertDialog(
+                  title: const Text('할 일 추가하기'),
+                  content: SizedBox(
+                    height: 200,
+                    child: Column(
+                      children: [
+                        TextField(
+                          onChanged: (value) {
+                            title = value;
+                          },
+                          decoration: const InputDecoration(labelText: '제목'),
+                        ),
+                        TextField(
+                          onChanged: (value) {
+                            description = value;
+                          },
+                          decoration: const InputDecoration(labelText: '설명'),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                actions: [
-                  TextButton(
-                      child: const Text('추가'),
-                      onPressed: () async {
-                        await todoSqlite.addTodo(
-                          Todo(title: title, description: description),
-                        );
-                        List<Todo> newTodos = await todoSqlite.getTodos();
-                        setState(() {
-                          print("[UI] ADD");
-                          todos = newTodos;
-                        });
-                        Navigator.of(context).pop();
-                      }),
-                  TextButton(
-                      child: const Text('취소'),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      }),
-                ],
-              );
-            });*/
+                  actions: [
+                    TextButton(
+                        child: const Text('추가'),
+                        onPressed: () async {
+                          todoDefault.addTodo(
+                            Todo(title: title, description: description),
+                          );
+                          List<Todo> newTodos = todoDefault.getTodos();
+                          setState(() {
+                            if (kDebugMode) {
+                              print("[UI] ADD");
+                            }
+                            todos = newTodos;
+                          });
+                          Navigator.of(context).pop();
+                        }),
+                    TextButton(
+                        child: const Text('취소'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        }),
+                  ],
+                );
+              });
         },
       ),
       body: isLoading
