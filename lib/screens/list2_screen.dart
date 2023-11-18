@@ -215,7 +215,34 @@ class _ListScreenState extends State<ListScreen> {
                           padding: const EdgeInsets.all(5),
                           child: InkWell(
                             child: const Icon(Icons.delete),
-                            onTap: () {},
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text('할 일 삭제하기'),
+                                      content: const SizedBox(
+                                        child: Text('삭제하시겠습니까?'),
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                            child: const Text('삭제'),
+                                            onPressed: () async {
+                                              setState(() {
+                                                todoDefault.deleteTodo(
+                                                    todos[index].id ?? 0);
+                                              });
+                                              Navigator.of(context).pop();
+                                            }),
+                                        TextButton(
+                                            child: const Text('취소'),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            }),
+                                      ],
+                                    );
+                                  });
+                            },
                           ),
                         ),
                       ],
@@ -237,28 +264,7 @@ class _ListScreenState extends State<ListScreen> {
                         child: InkWell(
                           child: const Icon(Icons.delete),
                           onTap: () {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: const Text('할 일 삭제하기'),
-                                    content: const SizedBox(
-                                      child: Text('삭제하시겠습니까?'),
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                          child: const Text('삭제'),
-                                          onPressed: () async {
-                                            setState(() {
-                                              TodoSqlite.deleteTodo(
-                                                  todos[index].id ?? 0);
-                                            });
-                                            Navigator.of(context).pop();
-                                          }),
-                                      TextButton(
-                                          child: const Text('취소'),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
+                           
                                           }),
                                     ],
                                   );
