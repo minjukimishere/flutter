@@ -159,52 +159,79 @@ class _ListScreenState extends State<ListScreen> {
                           child: InkWell(
                             child: const Icon(Icons.edit),
                             onTap: () {
-                              /*
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  String title = todos[index].title;
-                                  String description = todos[index].description;
-                                  return AlertDialog(
-                                    title: const Text('할 일 수정하기'),
-                                    content: SizedBox(
-                                      height: 200,
-                                      child: Column(
-                                        children: [
-                                          TextField(
-                                            onChanged: (value) {
-                                              title = value;
-                                            },
-                                            decoration: InputDecoration(
-                                              hintText: todos[index].title,
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    String title = todos[index].title;
+                                    String description =
+                                        todos[index].description;
+                                    return AlertDialog(
+                                      title: const Text('할 일 수정하기'),
+                                      content: SizedBox(
+                                        height: 200,
+                                        child: Column(
+                                          children: [
+                                            TextField(
+                                              onChanged: (value) {
+                                                title = value;
+                                              },
+                                              decoration: InputDecoration(
+                                                hintText: todos[index].title,
+                                              ),
                                             ),
-                                          ),
-                                          TextField(
-                                            onChanged: (value) {
-                                              description = value;
-                                            },
-                                            decoration: InputDecoration(
-                                              hintText:
-                                                  todos[index].description,
+                                            TextField(
+                                              onChanged: (value) {
+                                                description = value;
+                                              },
+                                              decoration: InputDecoration(
+                                                hintText:
+                                                    todos[index].description,
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                          child: const Text('수정'),
-                                          onPressed: () async {
-                                           await todoSqlite.deleteTodo(
-                                            todos[index].id??0);
-                                            List<Todo> newTodos=
-                                            await todoSqlite.getTodos();
-                                            setState((){
-                                              todos=newTodos;
-                                            });
-                                            Navigator.of(context).pop();
-                                          }), 
-                                      ]                 
+                                      actions: [
+                                        TextButton(
+                                            child: const Text('수정'),
+                                            onPressed: () async {
+                                              Todo newTodo = Todo(
+                                                id: todos[index].id,
+                                                title: title,
+                                                description: description,
+                                              );
+                                              setState(() {
+                                                todoDefault.updateTodo(newTodo);
+                                              });
+                                              Navigator.of(context).pop();
+                                            }),
+                                      ],
+                                    );
+                                  });
+                            },
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(5),
+                          child: InkWell(
+                            child: const Icon(Icons.delete),
+                            onTap: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+              separatorBuilder: (context, index) {
+                return const Divider();
+              },
+            ),
+    );
+  }
+}
+
+/*            
                       Container(
                         padding: const EdgeInsets.all(5),
                         child: InkWell(
@@ -280,25 +307,3 @@ class ListScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
             */
-                            },
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(5),
-                          child: InkWell(
-                            child: const Icon(Icons.delete),
-                            onTap: () {},
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) {
-                return const Divider();
-              },
-            ),
-    );
-  }
-}
