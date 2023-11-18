@@ -1,4 +1,5 @@
 //import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_basic_1/models/todo.dart';
 //import 'package:flutter_basic_1/providers/todo_sqlite.dart';
@@ -7,6 +8,7 @@ class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ListScreenState createState() => _ListScreenState();
 }
 
@@ -22,6 +24,12 @@ class _ListScreenState extends State<ListScreen> {
   @override
   void initState() {
     super.initState();
+    if (kDebugMode) {
+      print("initState");
+    }
+    setState(() {
+      isLoading = false;
+    });
   }
 
   /*
@@ -274,9 +282,9 @@ class ListScreen extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           child: InkWell(
-                            child: Icon(Icons.delete),
+                            child: const Icon(Icons.delete),
                             onTap: () {},
                           ),
                         ),
@@ -286,7 +294,7 @@ class ListScreen extends StatelessWidget {
                 );
               },
               separatorBuilder: (context, index) {
-                return Divider();
+                return const Divider();
               },
             ),
     );

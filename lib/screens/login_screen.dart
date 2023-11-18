@@ -23,8 +23,8 @@ class LoginScreen extends StatelessWidget {
           child: ElevatedButton(
             onPressed: () {
               setLoin().then((_) {
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => ListScreen()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const ListScreen()));
               });
             },
             child: const Text('로그인'),
