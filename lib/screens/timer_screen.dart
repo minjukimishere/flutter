@@ -10,11 +10,14 @@ class TimerScreen extends StatefulWidget {
   const TimerScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _TimerScreenState createState() => _TimerScreenState();
 }
 
 class _TimerScreenState extends State<TimerScreen> {
+  // ignore: constant_identifier_names
   static const WORK_SEOCNDS = 25;
+  // ignore: constant_identifier_names
   static const REST_SEOCNDS = 5;
 
   late TimerStatus _timerStatus;

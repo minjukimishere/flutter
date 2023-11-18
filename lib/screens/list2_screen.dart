@@ -1,8 +1,8 @@
-//import 'dart:async';
+import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_basic_1/models/todo.dart';
-//import 'package:flutter_basic_1/providers/todo_sqlite.dart';
+import 'package:flutter_basic_1/providers/todo_default.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
@@ -13,8 +13,8 @@ class ListScreen extends StatefulWidget {
 }
 
 class _ListScreenState extends State<ListScreen> {
-  List<Todo> todos = [];
-  //TodoSqlite todoSqlite = TodoSqlite();
+  late List<Todo> todos;
+  TodoDefault todoDefault = TodoDefault();
   bool isLoading = true;
 /*
   Future initDb() async {
@@ -24,12 +24,14 @@ class _ListScreenState extends State<ListScreen> {
   @override
   void initState() {
     super.initState();
-    if (kDebugMode) {
-      print("initState");
+    {
+      Timer(const Duration(seconds: 2), () {
+        todos = todoDefault.getTodos();
+        setState(() {
+          isLoading = false;
+        });
+      });
     }
-    setState(() {
-      isLoading = false;
-    });
   }
 
   /*
